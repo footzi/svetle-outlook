@@ -1,6 +1,6 @@
 <script lang="ts">
   import ActionsPanel from './ActionsPanel/index.svelte';
-  import { HeaderMenuType } from './constants';
+  import { HeaderMenuType, MAIN_MENU } from './constants';
 
   let activeMenu: HeaderMenuType = HeaderMenuType.MAIN;
 
@@ -9,17 +9,14 @@
 
 <header class="container">
   <ul class="buttons">
-    <li>
-      <button on:click={() => onClick(HeaderMenuType.MAIN)}>Главная</button>
-    </li>
-    <li>
-      <button on:click={() => onClick(HeaderMenuType.SORT)}
-        >Упорядочивание</button
-      >
-    </li>
-    <li>
-      <button on:click={() => onClick(HeaderMenuType.SERVICE)}>Сервис</button>
-    </li>
+    {#each MAIN_MENU as { type, title }}
+      <li>
+        <button
+          on:click={() => onClick(type)}
+          class:active={type === activeMenu}>{title}</button
+        >
+      </li>
+    {/each}
   </ul>
 </header>
 
@@ -30,26 +27,28 @@
   @import '../../styles/mixins';
   @import '../../styles/font-size';
 
-  .container {
-    background-color: $primary-light;
-  }
-
   .buttons {
-    padding-top: 20px;
-    padding-left: 20px;
+    margin-top: 20px;
     display: flex;
   }
 
   button {
-    @include transition(color);
+    @include transition(color, background-color, border-color);
     @include font-text();
-    color: $white;
-    margin-right: 20px;
+    padding: 12px 24px;
+    border-bottom: 1px solid transparent;
+    color: $gray-dark;
+    text-transform: uppercase;
     outline: none;
+
+    &.active {
+      color: $secondary-main;
+      border-bottom: 1px solid $secondary-main;
+    }
 
     &:hover,
     &:focus {
-      color: $gray-dark;
+      background-color: rgba($secondary-light, 0.1);
     }
   }
 </style>

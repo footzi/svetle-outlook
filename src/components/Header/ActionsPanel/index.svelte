@@ -1,6 +1,6 @@
 <script lang="ts">
   import Button from '../../../components/Button/index.svelte';
-  import Fa from 'svelte-fa/src/fa.svelte';
+  import Icon from 'svelte-fa/src/fa.svelte';
   import { faEnvelope, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
   import { HeaderMenuType } from '../constants';
 
@@ -16,14 +16,14 @@
         <li>
           <Button variant="outlined" color="primary" text="создать">
             <svelte:fragment slot="icon">
-              <Fa icon={faEnvelope} size={'1.6x'} />
+              <Icon icon={faEnvelope} size={'1.6x'} />
             </svelte:fragment>
           </Button>
         </li>
         <li>
           <Button variant="outlined" color="primary" text="удалить">
             <svelte:fragment slot="icon">
-              <Fa icon={faTrashAlt} size={'1.6x'} />
+              <Icon icon={faTrashAlt} size={'1.6x'} />
             </svelte:fragment>
           </Button>
         </li>
@@ -42,7 +42,6 @@
   @import '../../../styles/font-size';
 
   .container {
-    padding-left: 20px;
     background-color: $white;
   }
 
