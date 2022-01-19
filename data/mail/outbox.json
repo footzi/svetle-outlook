@@ -13,8 +13,25 @@
       "subject": "Привет!",
       "time": "2018-04-04T13:15:00.000Z",
       "body": {
-        "title": "Привет Костя! как дела?",
-        "html": "<h1 style='color:red'>Привет <b>Костя!</b> как дела?</h1>"
+        "title": "Привет, Костя! Как дела?",
+        "html": "<h1 style='color:red'>Привет <b>Костя!</b> как дела?</h1> <h2 color:blue>Я написал это письмо прямо в html</h2><p>Отправляю ссылку тебе на мой репозиторий <a href='https://github.com/footzi/svetle-outlook'>https://github.com/footzi/svetle-outlook</a></p>"
+      }
+    },
+    {
+      "id": 2,
+      "sender": {
+        "login": "vlad@test.com",
+        "title": "Манаков Владислав"
+      },
+      "recipients": [{
+        "login": "egor@test.com",
+        "title": "Изукаев Егор"
+      }],
+      "subject": "Привет, Егор! Когда будет бэк?!",
+      "time": "2018-04-04T20:00:00.000Z",
+      "body": {
+        "title": "Смотри какой котик!",
+        "html": "<h2>Смотри какой котик!</h2> <img src='./images/cat.jpeg' alt='Кот'/>"
       }
     }
   ]
