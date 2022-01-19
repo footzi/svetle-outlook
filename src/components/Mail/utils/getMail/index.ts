@@ -6,8 +6,8 @@ import { FolderType } from '../../Folders/constants';
 export const getMail = async (folder: FolderType): Promise<Message[]> => {
   const url =
     folder === FolderType.INPUT
-      ? '/data/mail/inbox.json'
-      : '/data/mail/outbox.json';
+      ? './data/mail/inbox.json'
+      : './data/mail/outbox.json';
   const data = await getData<Message[]>(url);
 
   if ('data' in data && data.data) {
