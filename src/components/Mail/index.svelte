@@ -8,10 +8,6 @@
   let activeFolder = FolderType.INPUT;
   let messages: Message[] = [];
 
-  const handleClickFolder = (event: CustomEvent<{ type: FolderType }>) => {
-    activeFolder = event.detail.type;
-  };
-
   const load = async () => {
     messages = await getMail(activeFolder);
   };
@@ -19,5 +15,5 @@
   $: activeFolder && load();
 </script>
 
-<Folders {activeFolder} on:click={handleClickFolder} />
+<Folders bind:activeFolder />
 <List {messages} />

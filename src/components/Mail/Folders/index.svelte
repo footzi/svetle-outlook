@@ -1,15 +1,10 @@
 <script lang="ts">
   import Icon from 'svelte-fa';
-  import { FOLDERS } from './constants';
-  import { createEventDispatcher } from 'svelte';
-  import { HeaderMenuType } from '../../Header/constants';
+  import { FOLDERS, FolderType } from './constants';
 
-  let activeFolder;
+  let activeFolder = FolderType.INPUT;
 
-  const dispatch = createEventDispatcher();
-
-  const handleClickFolder = (type: HeaderMenuType) =>
-    dispatch('click', { type });
+  const handleClickFolder = (type: FolderType) => (activeFolder = type);
 
   export { activeFolder };
 </script>
