@@ -30,6 +30,7 @@
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
+    "dayjs": "1.10.7",
     "svelte": "3.46.1",
     "svelte-fa": "2.4.0"
   }

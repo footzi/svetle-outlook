@@ -1,10 +1,17 @@
 <script lang="ts">
   import Icon from 'svelte-fa';
-  import { FOLDERS, FolderType } from './constants';
+  import { FOLDERS } from './constants';
+  import { createEventDispatcher } from 'svelte';
+  import { HeaderMenuType } from '../../Header/constants';
 
-  let activeFolder = FolderType.INPUT;
+  let activeFolder;
 
-  const handleClickFolder = (type: FolderType) => (activeFolder = type);
+  const dispatch = createEventDispatcher();
+
+  const handleClickFolder = (type: HeaderMenuType) =>
+    dispatch('click', { type });
+
+  export { activeFolder };
 </script>
 
 <ul>
@@ -12,7 +19,7 @@
     <li>
       <button
         on:click={() => handleClickFolder(type)}
-        class:active={type === activeFolder}
+        class:is-active={type === activeFolder}
       >
         <Icon {icon} size={'1x'} class="icon" />
         {title}
@@ -44,7 +51,7 @@
     padding: 8px 12px;
     outline: none;
 
-    &.active {
+    &.is-active {
       background-color: rgba($gray-light, 0.1);
 
       :global(.icon) {

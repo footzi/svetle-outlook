@@ -1,5 +1,23 @@
 <script lang="ts">
-import Folders from './Folders/index.svelte'
+  import Folders from './Folders/index.svelte';
+  import List from './List/index.svelte';
+  import { getMail } from './utils/getMail';
+  import { FolderType } from './Folders/constants';
+  import type { Message } from '../../interfaces';
+
+  let activeFolder = FolderType.INPUT;
+  let messages: Message[] = [];
+
+  const handleClickFolder = (event: CustomEvent<{ type: FolderType }>) => {
+    activeFolder = event.detail.type;
+  };
+
+  const load = async () => {
+    messages = await getMail(activeFolder);
+  };
+
+  $: activeFolder && load();
 </script>
 
-<Folders />
+<Folders {activeFolder} on:click={handleClickFolder} />
+<List {messages} />

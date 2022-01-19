@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "sender": {
+        "login": "vlad@test.com",
+        "title": "Манаков Владислав"
+      },
+      "recipients": [{
+        "login": "kostya@test.com",
+        "title": "Гайдуков Константин"
+      }],
+      "subject": "Привет!",
+      "time": "2018-04-04T13:15:00.000Z",
+      "body": {
+        "title": "Привет Костя! как дела?",
+        "html": "<h1 style='color:red'>Привет <b>Костя!</b> как дела?</h1>"
+      }
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
   let activeMenu: HeaderMenuType = HeaderMenuType.MAIN;
 
-  const onClick = (type: HeaderMenuType) => (activeMenu = type);
+  const handleClick = (type: HeaderMenuType) => (activeMenu = type);
 </script>
 
 <header class="container">
@@ -12,8 +12,8 @@
     {#each MAIN_MENU as { type, title }}
       <li>
         <button
-          on:click={() => onClick(type)}
-          class:active={type === activeMenu}>{title}</button
+          on:click={() => handleClick(type)}
+          class:is-active={type === activeMenu}>{title}</button
         >
       </li>
     {/each}
@@ -41,7 +41,7 @@
     text-transform: uppercase;
     outline: none;
 
-    &.active {
+    &.is-active {
       color: $secondary-main;
       border-bottom: 1px solid $secondary-main;
     }
