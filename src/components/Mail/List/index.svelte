@@ -2,14 +2,26 @@
   import type { Message } from '../../../interfaces';
 
   let messages: Message[] = [];
+  let activeMessage: Message | null = null;
 
-  export { messages };
+  const handleClickMessage = (selectedId: number) => {
+    const currentMessage = messages.find(({ id }) => id === selectedId);
+
+    if (currentMessage) {
+      activeMessage = currentMessage;
+    }
+  };
+
+  export { messages, activeMessage };
 </script>
 
 <ul>
-  {#each messages as { sender, subject, time, body }}
+  {#each messages as { id, sender, subject, time, body }}
     <li>
-      <button>
+      <button
+        class:is-active={activeMessage?.id === id}
+        on:click={() => handleClickMessage(id)}
+      >
         <div class="wrapper">
           <div class="title">{sender.title}</div>
           <div class="subject">
@@ -35,6 +47,7 @@
     padding: 8px 0;
     width: 30%;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
   li {
@@ -50,15 +63,15 @@
     outline: none;
     text-align: left;
 
+    &.is-active {
+      background-color: rgba($primary-main, 0.1);
+      pointer-events: none;
+    }
+
     &:hover,
     &:focus {
       background-color: rgba($gray-light, 0.1);
     }
-  }
-
-  .is-active {
-    background-color: rgba($primary-main, 0.1);
-    pointer-events: none;
   }
 
   .wrapper {
