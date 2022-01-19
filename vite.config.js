@@ -4,15 +4,16 @@ import sveltePreprocess from 'svelte-preprocess';
 import path from 'path';
 
 export default defineConfig({
-	plugins: [
-		svelte({
-			preprocess: sveltePreprocess(),
-			/* plugin options */
-		})
-	],
-	resolve: {
-		alias: {
-			'@components': path.resolve('/src/components'),
-		},
-	}
+  base: './',
+  plugins: [
+    svelte({
+      preprocess: sveltePreprocess()
+      /* plugin options */
+    })
+  ],
+  resolve: {
+    alias: {
+      '@components': path.resolve('/src/components')
+    }
+  }
 });
