@@ -1,10 +1,10 @@
 <script lang="ts">
-  let text = ''
-  let variant = 'contained'
-  let color = 'primary'
-  let iconPosition = 'top'
+  let text = '';
+  let variant = 'contained';
+  // let color = 'primary'
+  let iconPosition = 'top';
 
-  export { text, variant, color }
+  export { text, variant };
 </script>
 
 <button
@@ -40,12 +40,13 @@
     color: $white;
     background-color: $primary-main;
     box-shadow: 0 3px 1px -2px rgba($black, 0.2),
-    0 2px 2px 0px rgba($black, 0.14), 0 1px 5px 0px rgba($black, 0.12);
+      0 2px 2px 0px rgba($black, 0.14), 0 1px 5px 0px rgba($black, 0.12);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: $primary-dark;
       box-shadow: 0 2px 4px -1px rgba($black, 0.2),
-      0px 4px 5px 0px rgba($black, 0.14), 0px 1px 10px 0px rgb($black, 0.12);
+        0px 4px 5px 0px rgba($black, 0.14), 0px 1px 10px 0px rgb($black, 0.12);
     }
   }
 
@@ -53,7 +54,8 @@
     color: $primary-main;
     border: 1px solid $primary-light;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border: 1px solid $primary-main;
       background-color: rgba($primary-main, 0.1);
     }
