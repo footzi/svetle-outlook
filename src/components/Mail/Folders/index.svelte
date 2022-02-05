@@ -58,10 +58,10 @@
     &:focus {
       background-color: rgba($gray-light, 0.1);
     }
-  }
 
-  :global(.icon) {
-    @include transition(color);
-    margin-right: 8px;
+    :global(.icon) {
+      @include transition(color);
+      margin-right: 8px;
+    }
   }
 </style>

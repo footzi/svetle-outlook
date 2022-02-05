@@ -7,7 +7,7 @@ export const getData = async <T>(
     const response = await fetch(url);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return await response.json();
-  } catch (error) {
+  } catch (error: any) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     alert(error?.message);
     return {

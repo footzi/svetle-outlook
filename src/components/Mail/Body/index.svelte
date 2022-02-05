@@ -6,7 +6,7 @@
   export { activeMessage };
 </script>
 
-{#if activeMessage}
+{#if activeMessage !== null}
   <div class="container">
     <h2>{activeMessage.subject}</h2>
 

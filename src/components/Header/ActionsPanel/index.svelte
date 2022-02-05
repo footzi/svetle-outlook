@@ -1,12 +1,14 @@
 <script lang="ts">
   import Button from '../../../components/Button/index.svelte';
-  import Icon from 'svelte-fa/src/fa.svelte';
   import { faEnvelope, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
   import { HeaderMenuType } from '../constants';
+  import { showMessageModal } from '../../../store';
 
   let activeMenu = HeaderMenuType.MAIN;
 
-  export { activeMenu }
+  const handleCreateButton = () => showMessageModal.set(true);
+
+  export { activeMenu };
 </script>
 
 <div class="container">
@@ -14,18 +16,23 @@
     <div class="panel">
       <ul class="buttons">
         <li>
-          <Button variant="outlined" color="primary" text="создать">
-            <svelte:fragment slot="icon">
-              <Icon icon={faEnvelope} size={'1.6x'} />
-            </svelte:fragment>
-          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            text="создать"
+            icon={faEnvelope}
+            iconPosition="top"
+            on:click={handleCreateButton}
+          />
         </li>
         <li>
-          <Button variant="outlined" color="primary" text="удалить">
-            <svelte:fragment slot="icon">
-              <Icon icon={faTrashAlt} size={'1.6x'} />
-            </svelte:fragment>
-          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            text="удалить"
+            iconPosition="top"
+            icon={faTrashAlt}
+          />
         </li>
       </ul>
     </div>

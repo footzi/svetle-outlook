@@ -1,6 +1,7 @@
 <script>
   import Header from '@components/Header/index.svelte';
   import Mail from '../components/Mail/index.svelte';
+  import MessageModal from '../components/Mail/MessageModal/index.svelte';
 </script>
 
 <div class="container">
@@ -10,6 +11,8 @@
       <Mail />
     </main>
   </div>
+
+  <MessageModal />
 </div>
 
 <style lang="scss">
