@@ -6,7 +6,7 @@
     ButtonIconPosition
   } from './constants';
   import Icon from 'svelte-fa';
-import type { IconDefinition } from '@fortawesome/free-regular-svg-icons';
+  import type { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
   let text = '';
   let variant: ButtonVariants = 'contained';
@@ -26,7 +26,7 @@ import type { IconDefinition } from '@fortawesome/free-regular-svg-icons';
   class:icon-only={iconPosition === 'only'}
   class:contained={variant === 'contained'}
   class:outlined={variant === 'outlined'}
-  class:size-s={size === "S"}
+  class:size-s={size === 'S'}
   class:is-pressed={isPressed}
   on:click={handleClick}
 >
@@ -58,7 +58,7 @@ import type { IconDefinition } from '@fortawesome/free-regular-svg-icons';
         0 2px 2px 0px rgba($black, 0.14), 0 1px 5px 0px rgba($black, 0.12);
 
       &:hover,
-      &:focus {
+      &:global(.focus-visible) {
         background-color: $primary-dark;
         box-shadow: 0 2px 4px -1px rgba($black, 0.2),
           0px 4px 5px 0px rgba($black, 0.14), 0px 1px 10px 0px rgb($black, 0.12);
@@ -70,7 +70,7 @@ import type { IconDefinition } from '@fortawesome/free-regular-svg-icons';
       border: 1px solid $primary-light;
 
       &:hover,
-      &:focus {
+      &:global(.focus-visible) {
         border: 1px solid $primary-main;
         background-color: rgba($primary-main, 0.1);
       }

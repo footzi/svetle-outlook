@@ -1,7 +1,7 @@
 <script>
-  import Header from '@components/Header/index.svelte';
-  import Mail from '../components/Mail/index.svelte';
-  import MessageModal from '../components/Mail/MessageModal/index.svelte';
+  import Header from 'components/Header/index.svelte';
+  import Mail from 'components/Mail/index.svelte';
+  import MessageModal from 'components/Mail/MessageModal/index.svelte';
 </script>
 
 <div class="container">
@@ -37,11 +37,5 @@
     background-color: $white;
     padding-right: 24px;
     padding-left: 24px;
-  }
-
-  .main {
-    display: flex;
-    margin-top: 12px;
-    border-top: 1px solid rgba($gray-light, 0.3);
   }
 </style>

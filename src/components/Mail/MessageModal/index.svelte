@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { fly, fade } from 'svelte/transition';
+  import { focusTrap } from 'svelte-focus-trap';
   import { showMessageModal } from '../../../store';
   import Button from '../../Button/index.svelte';
   import {
@@ -12,7 +14,6 @@
   import { faSave } from '@fortawesome/free-regular-svg-icons';
 
   let isShowMessageModal = false;
-
   let operations: MessageEditorOperations[] = [];
 
   showMessageModal.subscribe((value: boolean) => {
@@ -39,9 +40,13 @@
 </script>
 
 {#if isShowMessageModal}
-  <div class="container">
+  <div class="container" transition:fade={{ delay: 100, duration: 300 }}>
     <div class="overlay" on:click={handleCLickOverlay} />
-    <div class="content">
+    <div
+      class="content"
+      transition:fly={{ y: -100, duration: 300 }}
+      use:focusTrap
+    >
       <div>
         <Button
           text="Сохранить"
@@ -160,5 +165,9 @@
     padding: 8px;
     border: 1px solid rgba($gray-light, 0.3);
     outline: none;
+
+    &:global(.focus-visible) {
+      outline: 1px solid $primary-main;
+    }
   }
 </style>

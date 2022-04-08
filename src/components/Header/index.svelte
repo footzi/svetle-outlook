@@ -1,10 +1,11 @@
 <script lang="ts">
-  import ActionsPanel from './ActionsPanel/index.svelte';
-  import { HeaderMenuType, MAIN_MENU } from './constants';
+  import { MAIN_MENU } from 'constants/index';
+  import { MenuTypes } from 'enums/index';
+  import { activeMenu } from 'store/index';
 
-  let activeMenu: HeaderMenuType = HeaderMenuType.MAIN;
+  console.log(activeMenu);
 
-  const handleClick = (type: HeaderMenuType) => (activeMenu = type);
+  const handleClick = (type: MenuTypes) => activeMenu.set(type);
 </script>
 
 <header class="container">
@@ -19,8 +20,6 @@
     {/each}
   </ul>
 </header>
-
-<ActionsPanel {activeMenu} />
 
 <style lang="scss">
   @import '../../styles/colors';
@@ -47,7 +46,7 @@
     }
 
     &:hover,
-    &:focus {
+    &:global(.focus-visible) {
       background-color: rgba($secondary-light, 0.1);
     }
   }

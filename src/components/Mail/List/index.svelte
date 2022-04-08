@@ -68,9 +68,12 @@
       pointer-events: none;
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: rgba($gray-light, 0.1);
+    }
+
+    &:global(.focus-visible) {
+      outline: 1px solid $primary-main;
     }
   }
 

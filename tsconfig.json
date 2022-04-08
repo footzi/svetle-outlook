@@ -16,9 +16,11 @@
     "allowJs": true,
     "checkJs": true,
     "paths": {
-      "@components": [
-        "src/components"
-      ]
+      "components/*": ["src/components/*"],
+      "constants/*": ["src/constants/*"],
+      "interfaces/*": ["src/interfaces/*"],
+      "enums/*": ["src/enums/*"],
+      "store/*": ["src/store/*"],
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]

@@ -13,7 +13,11 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@components': path.resolve('/src/components')
+      components: path.resolve('/src/components'),
+      constants: path.resolve('/src/constants'),
+      interfaces: path.resolve('/src/interfaces'),
+      enums: path.resolve('/src/enums'),
+      store: path.resolve('/src/store')
     }
   }
 });

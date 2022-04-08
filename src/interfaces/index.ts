@@ -1,3 +1,5 @@
+import type { MenuTypes } from '../enums';
+
 export interface User {
   login: string;
   title: string;
@@ -13,4 +15,9 @@ export interface Message {
     title: string;
     html: string;
   };
+}
+
+export interface MenuItem {
+  title: string;
+  type: MenuTypes;
 }

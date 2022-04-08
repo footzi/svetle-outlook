@@ -35,8 +35,10 @@
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
     "dayjs": "1.10.7",
+    "focus-visible": "5.2.0",
     "sass": "1.49.7",
     "svelte": "3.46.4",
-    "svelte-fa": "2.4.0"
+    "svelte-fa": "2.4.0",
+    "svelte-focus-trap": "1.2.0"
   }
 }
