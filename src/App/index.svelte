@@ -9,7 +9,7 @@
   import Notes from './Notes/index.svelte';
   import Ui from './ui.svelte';
 
-  let activeMenuItem;
+  let activeMenuItem: MenuTypes;
   activeMenu.subscribe((value) => (activeMenuItem = value));
 </script>
 

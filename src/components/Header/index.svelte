@@ -1,9 +1,9 @@
 <script lang="ts">
   import { MAIN_MENU } from 'constants/index';
-  import { MenuTypes } from 'enums/index';
+  import type { MenuTypes } from 'enums/index';
   import { activeMenu } from 'store/index';
 
-  let active;
+  let active: MenuTypes;
   activeMenu.subscribe((value) => (active = value));
 
   const handleClick = (type: MenuTypes) => activeMenu.set(type);

@@ -1,14 +1,14 @@
 <script lang="ts">
   import type { Message } from '../../../interfaces';
 
-  let activeMessage: Message | null = null;
+  let activeMessage: Message;
 
   export { activeMessage };
 </script>
 
-{#if activeMessage !== null}
+{#if activeMessage}
   <div class="container">
-    <!--    <h2>{activeMessage.subject}</h2>-->
+    <h2>{activeMessage.subject}</h2>
 
     <div>От кого: {activeMessage.sender.title}</div>
     <div>
@@ -38,7 +38,7 @@
     margin: 0 0 8px 0;
   }
 
-  body {
+  .body {
     margin-top: 8px;
   }
 </style>

@@ -1,17 +1,18 @@
 <script lang="ts">
-  import { fly, fade } from 'svelte/transition';
+  import { faSave } from '@fortawesome/free-regular-svg-icons';
   import { focusTrap } from 'svelte-focus-trap';
+  import { fade, fly } from 'svelte/transition';
+
   import { showMessageModal } from '../../../store';
   import Button from '../../Button/index.svelte';
-  import {
-    FORM_TEXT_OPERATIONS,
-    ALIGN_TEXT_OPERATIONS,
-    MessageEditorOperations,
-    COLOR_OPERATIONS
-  } from './constants';
   import ColorPicker from '../../ColorPicker/index.svelte';
   import type { ColorPickerSelectedEvent } from '../../ColorPicker/interfaces';
-  import { faSave } from '@fortawesome/free-regular-svg-icons';
+  import {
+    ALIGN_TEXT_OPERATIONS,
+    COLOR_OPERATIONS,
+    FORM_TEXT_OPERATIONS,
+    MessageEditorOperations
+  } from './constants';
 
   let isShowMessageModal = false;
   let operations: MessageEditorOperations[] = [];
@@ -29,6 +30,7 @@
       operations = [...operations, type];
     }
 
+    // eslint-disable-next-line
     document.execCommand(type);
   };
 

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { faSave } from '@fortawesome/free-regular-svg-icons';
-  import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+  import { faChevronLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
   import Button from 'components/Button/index.svelte';
   import type { Note } from 'interfaces/index';
 
@@ -8,9 +7,10 @@
 
   let notes: Note[] = [];
   let activeNote: Note;
-  let isActiveOpenNote: boolean = false;
+  let isActiveOpenNote = false;
 
-  const handleClickNote = (id: number) => {
+  // eslint-disable-next-line
+  const handleClickNote = (id) => {
     const currentNote = notes.find((note: Note) => note.id === id);
 
     if (currentNote) {
@@ -21,6 +21,16 @@
 
   const handleClickBack = () => (isActiveOpenNote = false);
 
+  const handleClickAdd = () => {
+    const newNote = {
+      id: notes.length + 1,
+      text: 'Новая заметка'
+    };
+    notes = [...notes, newNote];
+    activeNote = newNote;
+    isActiveOpenNote = true;
+  };
+
   const load = async () => {
     const loadNotes = await getNotes();
 
@@ -30,23 +40,33 @@
     }
   };
 
-  $: load();
+  $: void load();
 </script>
 
 <div class="container">
-  <ul class="list">
-    {#each notes as note}
-      <li
-        class="list__item"
-        class:is-active={note.id === activeNote.id}
-        on:click={() => handleClickNote(note.id)}
-      >
-        <span class="list__item-text">{note.text}</span>
-      </li>
-    {/each}
+  <div class="list">
+    <ul>
+      {#each notes as note}
+        <li
+          class="list__item"
+          class:is-active={note.id === activeNote.id}
+          on:click={() => handleClickNote(note.id)}
+        >
+          <span class="list__item-text">{note.text}</span>
+        </li>
+      {/each}
+    </ul>
 
-    <Button icon={faSave} variant="outlined" iconPosition="only" />
-  </ul>
+    <div class="list__bottom">
+      <Button
+        icon={faPlus}
+        variant="outlined"
+        iconPosition="only"
+        size="S"
+        on:click={handleClickAdd}
+      />
+    </div>
+  </div>
 
   <div class="content" class:is-opened={isActiveOpenNote}>
     <div class="content__header">
@@ -65,6 +85,6 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" module>
   @import './index';
 </style>

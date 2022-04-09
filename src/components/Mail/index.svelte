@@ -5,10 +5,10 @@
   import { showMessageModal } from 'store/index';
 
   import type { Message } from '../../interfaces';
-  import Body from './Body/index.svelte';
+  // import Body from './Body/index.svelte';
   import { FolderType } from './Folders/constants';
   import Folders from './Folders/index.svelte';
-  import List from './List/index.svelte';
+  // import List from './List/index.svelte';
   import { getMail } from './utils/getMail';
 
   let activeFolder = FolderType.INPUT;

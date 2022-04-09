@@ -31,6 +31,7 @@
   class:size-s={size === 'S'}
   class:size-m={size === 'M'}
   class:is-pressed={isPressed}
+  class={$$restProps.class}
   on:click={handleClick}
 >
   {text}
@@ -96,9 +97,6 @@
         width: 16px;
         height: 16px !important;
       }
-    }
-
-    &.size-m {
     }
 
     &.icon-top {
