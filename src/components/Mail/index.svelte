@@ -1,14 +1,15 @@
 <script lang="ts">
-  import Folders from './Folders/index.svelte';
-  import List from './List/index.svelte';
-  import Body from './Body/index.svelte';
-  import { getMail } from './utils/getMail';
-  import { FolderType } from './Folders/constants';
-  import type { Message } from '../../interfaces';
+  import { faEnvelope, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
   import ActionsPanel from 'components/ActionsPanel/index.svelte';
   import Button from 'components/Button/index.svelte';
-  import { faEnvelope, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
   import { showMessageModal } from 'store/index';
+
+  import type { Message } from '../../interfaces';
+  import Body from './Body/index.svelte';
+  import { FolderType } from './Folders/constants';
+  import Folders from './Folders/index.svelte';
+  import List from './List/index.svelte';
+  import { getMail } from './utils/getMail';
 
   let activeFolder = FolderType.INPUT;
   let activeMessage: Message | null = null;
@@ -52,8 +53,8 @@
 
 <div class="container">
   <Folders bind:activeFolder bind:activeMessage />
-  <List {messages} bind:activeMessage />
-  <Body {activeMessage} />
+  <!--  <List {messages} bind:activeMessage />-->
+  <!--  <Body {activeMessage} />-->
 </div>
 
 <style lang="scss">

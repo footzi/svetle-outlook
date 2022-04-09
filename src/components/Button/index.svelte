@@ -1,12 +1,13 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  import type {
-    ButtonSize,
-    ButtonVariants,
-    ButtonIconPosition
-  } from './constants';
-  import Icon from 'svelte-fa';
   import type { IconDefinition } from '@fortawesome/free-regular-svg-icons';
+  import { createEventDispatcher } from 'svelte';
+  import Icon from 'svelte-fa';
+
+  import type {
+    ButtonIconPosition,
+    ButtonSize,
+    ButtonVariants
+  } from './constants';
 
   let text = '';
   let variant: ButtonVariants = 'contained';
@@ -24,9 +25,11 @@
 <button
   class:icon-top={iconPosition === 'top'}
   class:icon-only={iconPosition === 'only'}
+  class:icon-right={iconPosition === 'right'}
   class:contained={variant === 'contained'}
   class:outlined={variant === 'outlined'}
   class:size-s={size === 'S'}
+  class:size-m={size === 'M'}
   class:is-pressed={isPressed}
   on:click={handleClick}
 >
@@ -50,6 +53,11 @@
     padding: 6px 12px;
     text-transform: uppercase;
     outline: none;
+
+    :global(.icon) {
+      width: 18px;
+      height: 18px !important;
+    }
 
     &.contained {
       color: $white;
@@ -82,12 +90,15 @@
     }
 
     &.size-s {
-      padding: 8px;
+      padding: 6px;
+
+      :global(.icon) {
+        width: 16px;
+        height: 16px !important;
+      }
     }
 
-    :global(.icon) {
-      width: 18px;
-      height: 18px !important;
+    &.size-m {
     }
 
     &.icon-top {

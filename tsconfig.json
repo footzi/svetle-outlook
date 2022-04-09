@@ -21,6 +21,7 @@
       "interfaces/*": ["src/interfaces/*"],
       "enums/*": ["src/enums/*"],
       "store/*": ["src/store/*"],
+      "api/*": ["src/api/*"],
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]

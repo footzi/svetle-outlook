@@ -3,7 +3,8 @@
   import { MenuTypes } from 'enums/index';
   import { activeMenu } from 'store/index';
 
-  console.log(activeMenu);
+  let active;
+  activeMenu.subscribe((value) => (active = value));
 
   const handleClick = (type: MenuTypes) => activeMenu.set(type);
 </script>
@@ -14,7 +15,7 @@
       <li>
         <button
           on:click={() => handleClick(type)}
-          class:is-active={type === activeMenu}>{title}</button
+          class:is-active={type === active}>{title}</button
         >
       </li>
     {/each}
@@ -27,7 +28,6 @@
   @import '../../styles/font-size';
 
   .buttons {
-    margin-top: 20px;
     display: flex;
   }
 

@@ -17,6 +17,11 @@ export interface Message {
   };
 }
 
+export interface Note {
+  id: number;
+  text: string;
+}
+
 export interface MenuItem {
   title: string;
   type: MenuTypes;

@@ -8,7 +8,7 @@
 
 {#if activeMessage !== null}
   <div class="container">
-    <h2>{activeMessage.subject}</h2>
+    <!--    <h2>{activeMessage.subject}</h2>-->
 
     <div>От кого: {activeMessage.sender.title}</div>
     <div>

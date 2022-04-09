@@ -1,6 +1,7 @@
-import { getData } from '../../../../api/getData';
-import type { Message, User } from '../../../../interfaces';
+import { getData } from 'api/getData';
 import dayjs from 'dayjs';
+import type { Message, User } from 'interfaces/index';
+
 import { FolderType } from '../../Folders/constants';
 
 export const getMail = async (folder: FolderType): Promise<Message[]> => {
