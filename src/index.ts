@@ -1,3 +1,5 @@
+import 'focus-visible/dist/focus-visible.min.js';
+
 import App from './App/index.svelte';
 import './styles/main.scss';
 
