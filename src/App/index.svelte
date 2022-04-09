@@ -15,7 +15,11 @@
 
 <div class="container">
   <Router>
-    <Route path="/">
+    <Route path="/ui">
+      <Ui />
+    </Route>
+
+    <Route path="">
       <div class="app">
         <Header />
         <main class="main">
@@ -29,10 +33,6 @@
           {/if}
         </main>
       </div>
-    </Route>
-
-    <Route path="/ui">
-      <Ui />
     </Route>
   </Router>
 </div>
