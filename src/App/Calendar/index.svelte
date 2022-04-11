@@ -2,14 +2,9 @@
   import Button from 'components/Button/index.svelte';
 
   const generate = () => {
-    const title = 'Заголовок уведомления';
-
-    const options = {
-      body: 'Тело уведомления',
-      icon: './images/cat.jpeg'
-    };
-
-    new Notification(title, options);
+    navigator.serviceWorker.getRegistration().then((req) => {
+      req.showNotification('Hello world');
+    });
   };
 
   const handleClick = () => {
