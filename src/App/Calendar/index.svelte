@@ -3,7 +3,15 @@
 
   const generate = () => {
     navigator.serviceWorker.getRegistration().then((req) => {
-      req.showNotification('Hello world');
+      const title = 'Заголовок уведомления';
+
+      const options = {
+        body: 'Тело уведомления',
+        icon: './images/cat.jpeg',
+        action: [{ action: 'go', title: 'go to goggle' }]
+      };
+
+      req.showNotification(title, options);
     });
   };
 
