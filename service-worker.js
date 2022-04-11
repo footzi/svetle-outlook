@@ -1,7 +1,7 @@
 // Cache Name
 const CACHE_NAME = 'static-cache-v1';
 // Cache Files
-const FILES_TO_CACHE = ['/offline.html'];
+const FILES_TO_CACHE = ['./offline.html'];
 // install
 
 self.addEventListener('install', (evt) => {
@@ -41,7 +41,7 @@ self.addEventListener('fetch', (evt) => {
   evt.respondWith(
     fetch(evt.request).catch(() => {
       return caches.open(CACHE_NAME).then((cache) => {
-        return cache.match('offline.html');
+        return cache.match('./offline.html');
       });
     })
   );
