@@ -1,8 +1,9 @@
 <script lang="ts">
   import Icon from 'svelte-fa';
+
   import { FOLDERS, FolderType } from './constants';
 
-  let activeFolder = FolderType.INPUT;
+  let activeFolder: FolderType;
 
   const handleClickFolder = (type: FolderType) => (activeFolder = type);
 

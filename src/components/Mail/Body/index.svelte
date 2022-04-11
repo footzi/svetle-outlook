@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Message } from '../../../interfaces';
+  import type { Message } from 'interfaces/index';
 
   let activeMessage: Message;
 

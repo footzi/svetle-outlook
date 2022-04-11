@@ -6,6 +6,7 @@
   import { activeMenu } from 'store/index';
   import { Route, Router } from 'svelte-navigator';
 
+  import Calendar from './Calendar/index.svelte';
   import Notes from './Notes/index.svelte';
   import Ui from './ui.svelte';
 
@@ -30,6 +31,10 @@
 
           {#if activeMenuItem === MenuTypes.NOTES}
             <Notes />
+          {/if}
+
+          {#if activeMenuItem === MenuTypes.CALENDAR}
+            <Calendar />
           {/if}
         </main>
       </div>

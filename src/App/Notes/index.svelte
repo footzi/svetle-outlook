@@ -9,8 +9,7 @@
   let activeNote: Note;
   let isActiveOpenNote = false;
 
-  // eslint-disable-next-line
-  const handleClickNote = (id) => {
+  const handleClickNote = (id: number) => {
     const currentNote = notes.find((note: Note) => note.id === id);
 
     if (currentNote) {
@@ -41,6 +40,7 @@
   };
 
   $: void load();
+  /* eslint-disable */
 </script>
 
 <div class="container">

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { faSave } from '@fortawesome/free-regular-svg-icons';
+  import { showMessageModal } from 'store/index';
   import { focusTrap } from 'svelte-focus-trap';
   import { fade, fly } from 'svelte/transition';
 
-  import { showMessageModal } from '../../../store';
   import Button from '../../Button/index.svelte';
   import ColorPicker from '../../ColorPicker/index.svelte';
   import type { ColorPickerSelectedEvent } from '../../ColorPicker/interfaces';
@@ -59,7 +59,7 @@
       </div>
       <div class="control-panel">
         <ul class="controls">
-          {#each FORM_TEXT_OPERATIONS as { type, icon }, key}
+          {#each FORM_TEXT_OPERATIONS as { type, icon }}
             <li>
               <Button
                 variant="outlined"

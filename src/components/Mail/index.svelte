@@ -5,14 +5,14 @@
   import { showMessageModal } from 'store/index';
 
   import type { Message } from '../../interfaces';
-  // import Body from './Body/index.svelte';
+  import Body from './Body/index.svelte';
   import { FolderType } from './Folders/constants';
   import Folders from './Folders/index.svelte';
-  // import List from './List/index.svelte';
+  import List from './List/index.svelte';
   import { getMail } from './utils/getMail';
 
-  let activeFolder = FolderType.INPUT;
-  let activeMessage: Message | null = null;
+  let activeFolder: FolderType = FolderType.INPUT;
+  let activeMessage: Message;
   let messages: Message[] = [];
 
   const handleCreateButton = () => showMessageModal.set(true);
@@ -53,8 +53,8 @@
 
 <div class="container">
   <Folders bind:activeFolder bind:activeMessage />
-  <!--  <List {messages} bind:activeMessage />-->
-  <!--  <Body {activeMessage} />-->
+  <List {messages} bind:activeMessage />
+  <Body {activeMessage} />
 </div>
 
 <style lang="scss">

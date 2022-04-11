@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Message } from '../../../interfaces';
+  import type { Message } from 'interfaces/index';
 
   let messages: Message[] = [];
-  let activeMessage: Message | null = null;
+  let activeMessage: Message;
 
   const handleClickMessage = (selectedId: number) => {
     const currentMessage = messages.find(({ id }) => id === selectedId);
@@ -19,7 +19,7 @@
   {#each messages as { id, sender, subject, time, body }}
     <li>
       <button
-        class:is-active={activeMessage?.id === id}
+        class:is-active={activeMessage.id === id}
         on:click={() => handleClickMessage(id)}
       >
         <div class="wrapper">
