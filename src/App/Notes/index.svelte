@@ -1,45 +1,66 @@
 <script lang="ts">
   import { faChevronLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
   import Button from 'components/Button/index.svelte';
+  import { Routes } from 'enums/index';
   import type { Note } from 'interfaces/index';
+  import { Route, navigate, useLocation, useParams } from 'svelte-navigator';
+  import { getIsMobile } from 'utils/getIsMobile';
 
+  import Preview from './Preview/index.svelte';
   import { getNotes } from './utils/getNotes';
 
   let notes: Note[] = [];
+  // let activeNoteId: number;
   let activeNote: Note;
-  let isActiveOpenNote = false;
 
-  const handleClickNote = (id: number) => {
-    const currentNote = notes.find((note: Note) => note.id === id);
+  const params = useParams();
+  // const location = useLocation<{ note: Note }>();
 
-    if (currentNote) {
-      activeNote = currentNote;
-      isActiveOpenNote = true;
-    }
+  const navigateToNote = (note: Note) => {
+    activeNote = note;
+    navigate(`/${note.id}`);
   };
 
-  const handleClickBack = () => (isActiveOpenNote = false);
+  const handleClickNote = (note: Note) => navigateToNote(note);
 
   const handleClickAdd = () => {
-    const newNote = {
+    const note = {
       id: notes.length + 1,
       text: 'Новая заметка'
     };
-    notes = [...notes, newNote];
-    activeNote = newNote;
-    isActiveOpenNote = true;
+    notes = [...notes, note];
+
+    const isMobile = getIsMobile();
+
+    if (!isMobile) {
+      navigateToNote(note);
+    }
   };
 
   const load = async () => {
     const loadNotes = await getNotes();
 
     if (loadNotes.length) {
+      const activeId = $params['*'];
+      const note =
+        loadNotes.find((note) => note.id === Number(activeId)) ?? loadNotes[0];
+
+      const isMobile = getIsMobile();
+
+      if (!isMobile) {
+        navigateToNote(note);
+      }
+
       notes = loadNotes;
-      activeNote = loadNotes[0];
     }
   };
 
   $: void load();
+
+  // $: {
+  //   if = $location.state?.note?.id ?? 0;
+  // }
+
   /* eslint-disable */
 </script>
 
@@ -47,12 +68,14 @@
   <div class="list">
     <ul>
       {#each notes as note}
-        <li
-          class="list__item"
-          class:is-active={note.id === activeNote.id}
-          on:click={() => handleClickNote(note.id)}
-        >
-          <span class="list__item-text">{note.text}</span>
+        <li>
+          <a
+            class="list__item"
+            href={`/${note.id}`}
+            class:is-active={note.id === activeNote?.id}
+            on:click|preventDefault={() => handleClickNote(note)}
+            ><span class="list__item-text">{note.text}</span></a
+          >
         </li>
       {/each}
     </ul>
@@ -68,21 +91,27 @@
     </div>
   </div>
 
-  <div class="content" class:is-opened={isActiveOpenNote}>
-    <div class="content__header">
-      <Button
-        icon={faChevronLeft}
-        variant="outlined"
-        iconPosition="only"
-        size="S"
-        on:click={handleClickBack}
-      />
-    </div>
+  <!--{activeNote && activeNote.text}-->
+  <Preview note={activeNote} />
 
-    <div class="content__text">
-      {activeNote && activeNote.text}
-    </div>
-  </div>
+  <!--  <div class="content" class:is-opened={Boolean(activeNoteId)}>-->
+  <!--    <div class="content__header">-->
+  <!--      <Button-->
+  <!--        icon={faChevronLeft}-->
+  <!--        variant="outlined"-->
+  <!--        iconPosition="only"-->
+  <!--        size="S"-->
+  <!--        on:click={handleClickBack}-->
+  <!--      />-->
+  <!--    </div>-->
+
+  <!--    <div class="content__text">-->
+  <!--      <Route path={Routes.NOTES_ID}>-->
+  <!--        &lt;!&ndash;{activeNote && activeNote.text}&ndash;&gt;-->
+  <!--        <Preview />-->
+  <!--      </Route>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </div>
 
 <style lang="scss" module>

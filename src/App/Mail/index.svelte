@@ -9,6 +9,7 @@
   import { FolderType } from './Folders/constants';
   import Folders from './Folders/index.svelte';
   import List from './List/index.svelte';
+  import MessageModal from './MessageModal/index.svelte';
   import { getMail } from './utils/getMail';
 
   let activeFolder: FolderType = FolderType.INPUT;
@@ -56,6 +57,8 @@
   <List {messages} bind:activeMessage />
   <Body {activeMessage} />
 </div>
+
+<MessageModal />
 
 <style lang="scss">
   @import '../../styles/colors';

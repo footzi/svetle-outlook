@@ -1,28 +1,26 @@
 <script lang="ts">
   import { MAIN_MENU } from 'constants/index';
-  import type { MenuTypes } from 'enums/index';
-  import { activeMenu } from 'store/index';
+  import { link, useLocation } from 'svelte-navigator';
 
-  let active: MenuTypes;
-  activeMenu.subscribe((value) => (active = value));
-
-  const handleClick = (type: MenuTypes) => activeMenu.set(type);
+  const location = useLocation();
 </script>
 
-<header class="container">
+<header>
   <ul class="buttons">
-    {#each MAIN_MENU as { type, title }}
+    {#each MAIN_MENU as { href, title }}
       <li>
-        <button
-          on:click={() => handleClick(type)}
-          class:is-active={type === active}>{title}</button
+        <a
+          {href}
+          class="link"
+          class:is-active={href === $location.pathname}
+          use:link>{title}</a
         >
       </li>
     {/each}
   </ul>
 </header>
 
-<style lang="scss">
+<style lang="scss" module>
   @import '../../styles/colors';
   @import '../../styles/mixins';
   @import '../../styles/font-size';
@@ -31,7 +29,7 @@
     display: flex;
   }
 
-  button {
+  .link {
     @include transition(color, background-color, border-color);
     @include font-text();
     padding: 12px 24px;
@@ -39,6 +37,8 @@
     color: $gray-dark;
     text-transform: uppercase;
     outline: none;
+    display: block;
+    text-decoration: none;
 
     &.is-active {
       color: $secondary-main;

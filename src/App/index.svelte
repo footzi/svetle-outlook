@@ -1,44 +1,24 @@
 <script lang="ts">
   import Header from 'components/Header/index.svelte';
-  import MessageModal from 'components/Mail/MessageModal/index.svelte';
-  import Mail from 'components/Mail/index.svelte';
-  import { MenuTypes } from 'enums/index';
-  import { activeMenu } from 'store/index';
+  import { Routes } from 'enums/index';
   import { Route, Router } from 'svelte-navigator';
 
   import Calendar from './Calendar/index.svelte';
+  import Mail from './Mail/index.svelte';
   import Notes from './Notes/index.svelte';
-  import Ui from './ui.svelte';
-
-  let activeMenuItem: MenuTypes;
-  activeMenu.subscribe((value) => (activeMenuItem = value));
 </script>
 
 <div class="container">
   <Router>
-    <Route path="/ui">
-      <Ui />
-    </Route>
-
-    <Route path="">
-      <div class="app">
-        <Header />
-        <main class="main">
-          {#if activeMenuItem === MenuTypes.MAIN}
-            <Mail />
-            <MessageModal />
-          {/if}
-
-          {#if activeMenuItem === MenuTypes.NOTES}
-            <Notes />
-          {/if}
-
-          {#if activeMenuItem === MenuTypes.CALENDAR}
-            <Calendar />
-          {/if}
-        </main>
-      </div>
-    </Route>
+    <div class="app">
+      <Header />
+      <main class="main">
+        <Route path={Routes.NOTES_INNER}><Notes /></Route>
+        <Route path={Routes.MAIL}><Mail /></Route>
+        <Route path={Routes.CALENDAR}><Calendar /></Route>
+        <!--        <Route path={Routes.NOTES_ID}><h1>notes id</h1></Route>-->
+      </main>
+    </div>
   </Router>
 </div>
 

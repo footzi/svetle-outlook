@@ -1,4 +1,4 @@
-import type { MenuTypes } from '../enums';
+import type { Routes } from '../enums';
 
 export interface User {
   login: string;
@@ -24,5 +24,5 @@ export interface Note {
 
 export interface MenuItem {
   title: string;
-  type: MenuTypes;
+  href: Routes;
 }

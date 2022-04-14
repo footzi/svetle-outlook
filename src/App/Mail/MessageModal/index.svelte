@@ -1,12 +1,12 @@
 <script lang="ts">
   import { faSave } from '@fortawesome/free-regular-svg-icons';
+  import Button from 'components/Button/index.svelte';
+  import ColorPicker from 'components/ColorPicker/index.svelte';
+  import type { ColorPickerSelectedEvent } from 'components/ColorPicker/interfaces';
   import { showMessageModal } from 'store/index';
   import { focusTrap } from 'svelte-focus-trap';
   import { fade, fly } from 'svelte/transition';
 
-  import Button from '../../Button/index.svelte';
-  import ColorPicker from '../../ColorPicker/index.svelte';
-  import type { ColorPickerSelectedEvent } from '../../ColorPicker/interfaces';
   import {
     ALIGN_TEXT_OPERATIONS,
     COLOR_OPERATIONS,

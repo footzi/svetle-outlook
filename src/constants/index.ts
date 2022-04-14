@@ -1,17 +1,17 @@
-import { MenuTypes } from '../enums';
+import { Routes } from '../enums';
 import type { MenuItem } from '../interfaces';
 
 export const MAIN_MENU: MenuItem[] = [
   {
     title: 'Заметки',
-    type: MenuTypes.NOTES
+    href: Routes.NOTES
   },
   {
     title: 'Почта',
-    type: MenuTypes.MAIN
+    href: Routes.MAIL
   },
   {
     title: 'Календарь',
-    type: MenuTypes.CALENDAR
+    href: Routes.CALENDAR
   }
 ];
